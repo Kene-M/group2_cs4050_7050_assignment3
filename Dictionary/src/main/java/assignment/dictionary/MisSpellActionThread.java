@@ -67,8 +67,13 @@ public class MisSpellActionThread implements Runnable {
         try {
 // ADD CODE HERE
 // >>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
+            File fileIn = new File(theFileName);
+            input = new Scanner(fileIn);
+            while(input.hasNextLine()){
+                myDictionary.add(input.nextLine(), ); //#TODO add the value for the line
+            }
+            input.close();
+            dictionaryLoaded = true;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
          
 
@@ -87,11 +92,22 @@ public class MisSpellActionThread implements Runnable {
      */
     public void checkWords(String theFileName, DictionaryInterface<String, String> theDictionary) {
         Scanner input;
+        String tempString; //temporary string used to hold the current line that is being scanned
+        boolean wordValdidity; //boolean variable that stores if the current word is in the dictionary or not
         try {
  
 // ADD CODE HERE
 // >>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+            File fileIn = new File(theFileName);
+            input = new Scanner(fileIn);
+            while(input.hasNextLine()){
+                tempString = input.nextLine();
+                for(String currentWord : tempString.split("\\s")){ //for loop that iterates through each word in the current line
+                    wordValdidity = checkWord(currentWord, theDictionary); //sets wordValidity to the return value of checkWord on the current word
+                    myLines.addWordlet(new Wordlet(currentWord, wordValdidity)); // adds a new wordlet of the currentword and its validity to myLines
+                }
+                input.close();
+            }
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -112,11 +128,9 @@ public class MisSpellActionThread implements Runnable {
         boolean result = false;
 
         // ADD CODE HERE
-//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-
-
-
+//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        if(theDictionary.contains(word))
+            return true;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         return result;
