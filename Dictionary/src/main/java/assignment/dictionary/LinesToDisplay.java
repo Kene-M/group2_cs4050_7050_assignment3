@@ -35,7 +35,7 @@ public class LinesToDisplay {
         //ADD CODE HERE TO ADD A WORDLET TO THE CURRENT LINE
 
 //>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
-        lines[currentLine].add(w);
+        lines[currentLine].add(lines[currentLine].getLength(), w);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
 
