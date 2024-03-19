@@ -17,11 +17,12 @@ public class LinesToDisplay {
     /**
      * Constructor for objects of class LinesToDisplay
      */
+    @SuppressWarnings("unchecked")
     public LinesToDisplay() {
         //ADD CODE FOR THE CONSTRUCTOR
 //>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
         currentLine = 1;
-        lines = (AList<Wordlet>[]) new Object[LINES];
+        lines = (AList<Wordlet>[]) new AList[LINES];
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     }
