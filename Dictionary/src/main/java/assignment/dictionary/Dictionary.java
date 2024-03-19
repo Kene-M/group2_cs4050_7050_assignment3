@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * @author Ouda
  */
 
- /*public class Dictionary extends Application {
+ public class Dictionary extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -34,13 +34,13 @@ import javafx.stage.Stage;
     /**
      * @param args the command line arguments
      */
-/*    public static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
     
-}*/
-public class Dictionary {
+}
+/*public class Dictionary {
     public static void main(String[] args) {
         GUI.launch(GUI.class, args);
     }
-}
+}*/
