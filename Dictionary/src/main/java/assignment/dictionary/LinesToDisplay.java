@@ -19,10 +19,10 @@ public class LinesToDisplay {
      */
     public LinesToDisplay() {
         //ADD CODE FOR THE CONSTRUCTOR
-//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>        
-        
+//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
+        currentLine = 1;
+        lines = (AList<Wordlet>[]) new Object[LINES];
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 
     }
 
@@ -33,8 +33,8 @@ public class LinesToDisplay {
     public void addWordlet(Wordlet w) {
         //ADD CODE HERE TO ADD A WORDLET TO THE CURRENT LINE
 
-//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>        
-       
+//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
+        lines[currentLine].add(w);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
 
@@ -45,16 +45,24 @@ public class LinesToDisplay {
      */
     public void nextLine() {
         //ADD CODE TO HANDLE THE NEXT LINE
-//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>        
-
+//>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
+        if (currentLine + 1 > LINES) {
+            //Delete line one and replace push all lines upward
+            for(int i = 1; i <= LINES; ++i){
+                lines[i].clear();
+                for(int j = 1; j <= lines[i+1].getLength(); ++j) {
+                    lines[i].add(lines[i+1].getEntry(j));
+                }
+            }
+        } else {
+            currentLine++;
+        }
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
-
-      
     public int getCurrentLine(){
         return currentLine;
     }
-    
+
     public AList<Wordlet>[] getLines(){
         return lines;
     }
