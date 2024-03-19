@@ -70,7 +70,7 @@ public class MisSpellActionThread implements Runnable {
             File fileIn = new File(theFileName);
             input = new Scanner(fileIn);
             while(input.hasNextLine()){
-                myDictionary.add(input.nextLine(), ); //#TODO add the value for the line
+                theDictionary.add(input.nextLine(), input.nextLine()); //#TODO add the value for the line
             }
             input.close();
             dictionaryLoaded = true;
