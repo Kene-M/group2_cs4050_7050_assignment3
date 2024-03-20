@@ -50,29 +50,6 @@ public class DictionaryController implements Initializable {
                 Text checkedWord = new Text(word.getWord());
                 checkedWord.setFont(Font.font(family, size));
 
-                /*String[] splitPunctList = word.getWord().split("\\p{Punct}+");
-
-                for (String splitPunct: splitPunctList) {
-                    char ch = splitPunct.charAt(0);
-                    if (!(Character.isLetterOrDigit(ch))) {
-                        LinesToDisplay myWords = new LinesToDisplay();
-                        myWords.addWordlet(new Wordlet(splitPunct, true));
-                        Iterator<Wordlet> iter2 = myWords.getLines()[0].getIterator();
-                        Wordlet word2 = iter2.next();
-                        Text punct = new Text(word2.getWord());
-                        punct.setFill(Color.BLUE);
-
-                        while (iter2.hasNext()) {
-                            Wordlet word = iter.next();
-                    }
-                    else {
-                        if (word.isSpelledCorrectly());
-                            //
-                        else;
-                            //
-                    }
-                }*/
-
                 if (word.isSpelledCorrectly()) {
                     checkedWord.setFill(Color.BLUE);
                 } else {

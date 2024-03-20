@@ -39,8 +39,3 @@ import javafx.stage.Stage;
     }
     
 }
-/*public class Dictionary {
-    public static void main(String[] args) {
-        GUI.launch(GUI.class, args);
-    }
-}*/

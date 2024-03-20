@@ -76,12 +76,8 @@ public class MisSpellActionThread implements Runnable {
                 theDictionary.add(word, word);
             }
 
-            System.out.println(theDictionary); // FOR DEBUGGING
+            // System.out.println(theDictionary); // TODO FOR DEBUGGING
 
-            /* GRABS TWO LINES PER LOOP
-            while(input.hasNextLine()){
-                theDictionary.add(input.nextLine(), input.nextLine()); //#TODO add the value for the line
-            }*/
             input.close();
             dictionaryLoaded = true;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -122,21 +118,12 @@ public class MisSpellActionThread implements Runnable {
                     wordValdidity = checkWord(cleanWord, theDictionary);
 
                     // Adds a new wordlet of the currentWord and its validity to myLines
-                    myLines.addWordlet(new Wordlet(currentWord, wordValdidity));
-
-                    showLines(myLines);
-                    myLines.nextLine();
+                    myLines.addWordlet(new Wordlet(currentWord + " ", wordValdidity));
                 }
 
-                /* PRINTS ONLY LAST WORD IN LINE
+                // Display the current file line in correct color.
                 showLines(myLines);
                 myLines.nextLine();
-                 */
-
-                /*for(String currentWord : tempString.split("\\s")){ //for loop that iterates through each word in the current line
-                    wordValdidity = checkWord(currentWord, theDictionary); //sets wordValidity to the return value of checkWord on the current word
-                    myLines.addWordlet(new Wordlet(currentWord, wordValdidity)); // adds a new wordlet of the currentword and its validity to myLines
-                }*/
             }
             input.close();
 
