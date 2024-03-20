@@ -73,7 +73,7 @@ public class MisSpellActionThread implements Runnable {
             String word;
             while(input.hasNextLine()){
                  word = input.nextLine();
-                theDictionary.add(word, word); //#TODO add the value for the line
+                theDictionary.add(word, word);
             }
 
             System.out.println(theDictionary); // FOR DEBUGGING
@@ -112,12 +112,33 @@ public class MisSpellActionThread implements Runnable {
             input = new Scanner(fileIn);
             while(input.hasNextLine()){
                 tempString = input.nextLine();
-                for(String currentWord : tempString.split("\\s")){ //for loop that iterates through each word in the current line
+
+                //for loop that iterates through each word in the current line
+                for(String currentWord : tempString.split("\\s+")) {
+                    // Remove all punctuation attached to the word.
+                    String cleanWord = currentWord.replaceAll("\\p{Punct}", "");
+
+                    // Sets wordValidity to the return value of checkWord on the current word
+                    wordValdidity = checkWord(cleanWord, theDictionary);
+
+                    // Adds a new wordlet of the currentWord and its validity to myLines
+                    myLines.addWordlet(new Wordlet(currentWord, wordValdidity));
+
+                    showLines(myLines);
+                    myLines.nextLine();
+                }
+
+                /* PRINTS ONLY LAST WORD IN LINE
+                showLines(myLines);
+                myLines.nextLine();
+                 */
+
+                /*for(String currentWord : tempString.split("\\s")){ //for loop that iterates through each word in the current line
                     wordValdidity = checkWord(currentWord, theDictionary); //sets wordValidity to the return value of checkWord on the current word
                     myLines.addWordlet(new Wordlet(currentWord, wordValdidity)); // adds a new wordlet of the currentword and its validity to myLines
-                }
-                input.close();
+                }*/
             }
+            input.close();
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

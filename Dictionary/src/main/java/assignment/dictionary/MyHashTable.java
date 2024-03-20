@@ -41,6 +41,7 @@ public class MyHashTable<K,V>
     }
 
     public int hash(K key) {
+        //TODO DONT USE .HASHCODE()
         int index = key.hashCode(); // Get hash value of key.
         int compressedIndex = (index % (numElems - 1)) + 1; // 1 is added due to the first elem in AList being ignored.
         // 1 is removed from numElems for the same reason.

@@ -21,7 +21,10 @@ public class LinesToDisplay {
     public LinesToDisplay() {
         //ADD CODE FOR THE CONSTRUCTOR
 //>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
-        currentLine = 1;
+
+        // currentLine = 1; // START FROM 1 FINE?
+        currentLine = 0;
+
         lines = (AList<Wordlet>[]) new AList[LINES];
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -35,7 +38,8 @@ public class LinesToDisplay {
         //ADD CODE HERE TO ADD A WORDLET TO THE CURRENT LINE
 
 //>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
-        lines[currentLine].add(lines[currentLine].getLength(), w);
+        lines[currentLine] = new AList<>();
+        lines[currentLine].add(w);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
 
@@ -47,7 +51,19 @@ public class LinesToDisplay {
     public void nextLine() {
         //ADD CODE TO HANDLE THE NEXT LINE
 //>>>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>
-        if (currentLine + 1 > LINES) {
+
+        // Check if current is last index of lines.
+        if (currentLine == LINES - 1) {
+            // Push all lines upward, and delete last line.
+            for (int i = 0; i < LINES - 1; i++) {
+                lines[i] = lines[i + 1];
+            }
+            lines[LINES - 1] = null;
+        }
+        else // Go to next line
+            currentLine++;
+
+        /*if (currentLine + 1 > LINES) {
             //Delete line one and replace push all lines upward
             for(int i = 1; i <= LINES; ++i){
                 lines[i].clear();
@@ -57,7 +73,7 @@ public class LinesToDisplay {
             }
         } else {
             currentLine++;
-        }
+        }*/
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
     public int getCurrentLine(){
