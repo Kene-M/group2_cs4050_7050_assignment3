@@ -290,8 +290,9 @@ public class MyHashTable<K,V> {
             Pair<K,V> currEntry = bucket.getEntry(i);
             K currKey = currEntry.key;
 
-            if (currKey == key) {
+            if (currKey.equals((K)(key))) {
                 keyFound = true;
+                System.out.println("hi");
             }
         }
         return keyFound;

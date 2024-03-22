@@ -78,8 +78,8 @@ public class MisSpellActionThread implements Runnable {
                 theDictionary.add(word, word);
             }
 
-            System.out.println(theDictionary); // TODO FOR DEBUGGING
-            System.out.println(theDictionary.isEmpty());
+            //System.out.println(theDictionary); // TODO FOR DEBUGGING
+            //System.out.println(theDictionary.isEmpty());
 
             input.close();
             dictionaryLoaded = true;
