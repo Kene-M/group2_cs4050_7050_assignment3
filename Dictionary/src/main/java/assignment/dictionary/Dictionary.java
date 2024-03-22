@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- *
+ * @author Kene, Isaiah, Skylar
  * @author Ouda
  */
 

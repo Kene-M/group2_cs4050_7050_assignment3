@@ -4,6 +4,8 @@ import java.util.Iterator;
 
 
 /**
+ * @author Kene, Skylar, Isaiah.
+ *
  * A class that will be used to display the lines of text that are corrected.
  *
  */

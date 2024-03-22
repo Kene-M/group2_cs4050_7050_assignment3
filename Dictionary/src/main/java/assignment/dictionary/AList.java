@@ -19,9 +19,7 @@ public class AList<T> implements ListInterface<T> , Iterable<T>{
     private int numberOfEntries;
     private boolean initialized = false;
     private static final int DEFAULT_CAPACITY = 25;
-    //private static final int MAX_CAPACITY = 10000;
-
-    private static final int MAX_CAPACITY = 1000000000; // TODO REMOVE
+    private static final int MAX_CAPACITY = 10000;
 
     public AList() {
         this(DEFAULT_CAPACITY);

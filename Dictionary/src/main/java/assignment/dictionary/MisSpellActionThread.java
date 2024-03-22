@@ -5,6 +5,8 @@ import java.util.*;
 import javafx.application.Platform;
 
 /**
+ *
+ * @author Kene, Skylar, Isaiah.
  * A Thread that contains the application we are going to animate
  *
  */
@@ -76,7 +78,8 @@ public class MisSpellActionThread implements Runnable {
                 theDictionary.add(word, word);
             }
 
-            // System.out.println(theDictionary); // TODO FOR DEBUGGING
+            System.out.println(theDictionary); // TODO FOR DEBUGGING
+            System.out.println(theDictionary.isEmpty());
 
             input.close();
             dictionaryLoaded = true;
