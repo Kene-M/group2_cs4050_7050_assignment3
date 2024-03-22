@@ -13,8 +13,14 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * @author Kene, Isaiah, Skylar
- * @author Ouda
+ * @author Group 2: Kene, Isaiah, Skylar
+ * @author Professor: Ouda
+ *
+ * Created a GUI application that loads words from a file, and colors the words in
+ * another file depending on whether they were in the former file. It uses a
+ * dictionary/hashtable to store words from the original file and tests the words in
+ * the other. The hashtable does not
+ * use java.util.Hashtable<K,V>, or Object.hashCode() to implement hashing or storage.
  */
 
  public class Dictionary extends Application {
