@@ -414,8 +414,6 @@ public class MyHashTable<K,V> {
 
                 representation += "\n";
             }
-            if (i != numBuckets)
-                representation += "\n";
         }
 
         representation += "}";
