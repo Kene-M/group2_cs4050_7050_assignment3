@@ -16,47 +16,16 @@ import java.util.function.BiFunction;
  * @author Kene, Skylar, Isaiah.
  */
 public class MyHashTable<K,V> {
-    // You need to implement this class without using the
-    // Hashtable class from Java (“java.util.Hashtable<K,V>”).
-
-    /*
-     *Create a private "Pair" inner class that stores Key-Value pairs.
-     *Create private Key and Value fields.
-     Constructor only for (Key, Value) initialization. No setters/getters (use fields/AList).
-
-     *Create an array of ALists. Each hash to an array index to store
-     Key-Value "Pair".
-     *If collision occurs, use AList add() to add Pair at the end.
-     *If given duplicate key, either replace the corresponding value in Entry
-     at index, OR replace the AList Pair at index (may use constructor or setter).
-    ------------------------------------------------------------------------------
-     *For iterators, you could create a new AList and traverse all buckets in the dictionary
-     and add each key/value (depending on needed iterator) to it, and return the needed one.
-
-     *To clear() properly. Just loop through and clear each AList in each index.
-    */
-
-    //private AList<K> keyList;
-    //private AList<V> valuesList;
-
-    //private AList<V>[] hashTable; // Array of buckets containing key-value Pairs.
-
     private final int numBuckets = 200;
     private AList<Pair<K,V>>[] hashTable; // Array of buckets containing key-value Pairs.
 
     /*
-
+    Instantiates the hashTable and every the AList in every bucket.
      */
     @SuppressWarnings("unchecked")
     public MyHashTable () {
-        //keyList = new AList<>(numElems);
-        //valuesList = new AList<>(numElems);
-
-        //hashTable = (AList<V>[]) new AList[numBuckets];
-
         hashTable = (AList<Pair<K,V>>[]) new AList[numBuckets];
 
-        // Instantiate the list in every bucket.
         for (int i = 0; i < numBuckets; i++) {
             hashTable[i] = new AList<>();
         }
@@ -155,25 +124,6 @@ public class MyHashTable<K,V> {
             bucket.add(newEntry);
             return null;
         }
-
-        // Check if key already exists in dictionary.
-        /*if (keyList.contains(key)) { // Replace value at key.
-            int index = keyList.getPosition(key);
-            V retVal = valuesList.getEntry(index);
-            valuesList.add(index, value);
-
-            return retVal;
-        }
-        else { // Add the key and the value.
-            /*     keyList.add(key);
-            valuesList.add(value);*/
-
-            /*int index = hash(key);
-            keyList.add(index, key);
-            valuesList.add(index, value);
-
-            return null;
-        }*/
     }
 
 
@@ -215,17 +165,6 @@ public class MyHashTable<K,V> {
 
             return retVal;
         }
-
-        /*// Check if search key exists in dictionary.
-        if (!(keyList.contains(key))) {
-            return null;
-        }
-
-        int index = keyList.getPosition(key);
-        keyList.remove(index);
-        V retVal = valuesList.remove(index);
-
-        return retVal;*/
     }
 
     /** Retrieves from this dictionary the value associated with a given
@@ -261,22 +200,13 @@ public class MyHashTable<K,V> {
         else {
             return null;
         }
-
-        /*// Check if search key exists in dictionary.
-        if (!(keyList.contains(key))) {
-            return null;
-        }
-
-        int index = keyList.getPosition(key);
-        V retVal = valuesList.getEntry(index);
-
-        return retVal;*/
     }
 
     /** Sees whether a specific entry is in this dictionary.
      @param key An object search key of the desired entry.
      @return True if key is associated with an entry in the
      dictionary. */
+    @SuppressWarnings("unchecked")
     public boolean containsKey(Object key) {
         // Get the index of the Pair in the hashtable.
         int hashValue = hash((K)(key));
@@ -292,12 +222,9 @@ public class MyHashTable<K,V> {
 
             if (currKey.equals((K)(key))) {
                 keyFound = true;
-                System.out.println("hi");
             }
         }
         return keyFound;
-
-        // return keyList.contains((K)(key));
     }
 
     /** Creates an iterator that traverses all search keys in this
@@ -338,7 +265,6 @@ public class MyHashTable<K,V> {
         }
 
         return valuesList;
-        //return valuesList;
     }
 
     /** Sees whether this dictionary is empty.
@@ -351,8 +277,6 @@ public class MyHashTable<K,V> {
         else {
             return false;
         }
-
-        // return keyList.isEmpty();
     }
 
     /** Gets the size of this dictionary.
@@ -370,8 +294,6 @@ public class MyHashTable<K,V> {
         }
 
         return numElems;
-
-        // return keyList.getLength();
     }
 
     /** Removes all entries from this dictionary. */
@@ -381,14 +303,12 @@ public class MyHashTable<K,V> {
             // Clear each bucket.
             hashTable[i].clear();
         }
-
-        // keyList.clear();
-        // valuesList.clear();
     }
 
     /*
-        "Other" may be another hashtable, this method checks each Pair is equal.
+        "Other" may be another hashtable, this method checks whether each Pair is equal.
       */
+    @SuppressWarnings("unchecked")
     public boolean equals(Object other) {
         boolean isEqual = false;
 
@@ -396,6 +316,7 @@ public class MyHashTable<K,V> {
             //return (this.rollno) == (((Student)other).rollno);
 
             // TODO Check if the entries are equal.
+
 
         }
         return isEqual;
@@ -407,7 +328,6 @@ public class MyHashTable<K,V> {
     public String toString() {
         String representation = "{";
 
-        // TODO Turn into String.
         // Concatenate each key-value line.
         for (int i = 0; i < numBuckets; i++) {
             for (int j = 1; j <= hashTable[i].getLength(); j++) {
@@ -420,18 +340,5 @@ public class MyHashTable<K,V> {
         representation += "}";
 
         return representation;
-
-        /*String representation = "{";
-
-        for (int i = 1; i <= keyList.getLength(); i++) {
-            representation += keyList.getEntry(i) + ": " + valuesList.getEntry(i);
-
-            if (i != keyList.getLength())
-                representation += "\n";
-        }
-
-        representation += "}";
-
-        return representation;*/
     }
 }
