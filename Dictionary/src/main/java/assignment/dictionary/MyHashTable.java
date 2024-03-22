@@ -1,10 +1,5 @@
 package assignment.dictionary;
 
-/*
-
- */
-
-//
 import java.util.*;
 import java.io.*;
 import java.util.Dictionary;
@@ -14,6 +9,8 @@ import java.util.function.BiFunction;
 
 /**
  * @author Kene, Skylar, Isaiah.
+ * Implemented hash table that does not use java.util.HashTable<K,V> or
+ * Object.hashCode() to implement any storage or hashing.
  */
 public class MyHashTable<K,V> {
     private final int numBuckets = 200;
@@ -305,21 +302,53 @@ public class MyHashTable<K,V> {
         }
     }
 
-    /*
-        "Other" may be another hashtable, this method checks whether each Pair is equal.
-      */
+    /**
+     * This method checks whether each entry in another potential hash table is equal.
+     * @param other An object that could be another hashtable.
+     * */
     @SuppressWarnings("unchecked")
     public boolean equals(Object other) {
-        boolean isEqual = false;
+        // If it's the same object, they are equal.
+        if (this == other)
+            return true;
 
-        if (other instanceof MyHashTable<?,?>) {
-            //return (this.rollno) == (((Student)other).rollno);
+        // If the other object is not of the same type, they can't be equal.
+        if (!(other instanceof MyHashTable<?, ?>))
+            return false;
 
-            // TODO Check if the entries are equal.
+        // Cast the other object to MyHashTable.
+        MyHashTable<K,V> otherTable = (MyHashTable<K, V>) other;
 
+        // Check if both hash tables have the same size.
+        if (this.size() != otherTable.size())
+            return false;
 
+        // Iterate through each bucket in this hash table.
+        for (int i = 0; i < numBuckets; i++) {
+            AList<Pair<K,V>> bucket = hashTable[i];
+            AList<Pair<K,V>> otherBucket = otherTable.hashTable[i];
+
+            // If the buckets have different lengths, they can't be equal.
+            if (bucket.getLength() != otherBucket.getLength())
+                return false;
+
+            // Iterate through each entry in the bucket.
+            for (int j = 1; j <= bucket.getLength(); j++) {
+                Pair<K,V> entry = bucket.getEntry(j);
+                K key = entry.key;
+                V value = entry.value;
+
+                // Check if the corresponding entry exists in the other hash table.
+                if (!otherTable.containsKey(key))
+                    return false;
+
+                // Check if the values associated with the same key are equal.
+                if (!value.equals(otherTable.get(key)))
+                    return false;
+            }
         }
-        return isEqual;
+
+        return true; // If all checks pass, the hash tables are equal.
     }
 
     /*
